@@ -48,8 +48,17 @@ It is a web service that has to be deployed in an application server (such as Ap
  ----------------
 + Java JDK 1.7+
 + Maven (to compile from sources and generate the WAR file)  
-+ Apache Tomcat (to deploy the WAR). Works on version 7+ up to 7.0.28 included.
++ Apache Tomcat (to deploy the WAR). Works on version 7+ up to 7.0.28 included. Notice that it might not work with newer versions.
 + (Optional) An SQL-based database (tested on MySQL 5+)
+
+If working on Linux (assuming Ubuntu), you can easily install the dependencies (Git, Java + Maven) with:
+
+``
+sudo apt-get update && sudo apt-get install openjdk-7-jdk git maven
+``
+
+Install the appropriate version of Apache Tomcat.
+
 
 VMRC server can operate with an in-memory database provided by HSQLDB (just for testing).
 
@@ -62,9 +71,9 @@ git clone https://github.com/grycap/vmrc.git
 
 2. Compile from sources with the command:
 ```
-mvn2 package -Dmaven.test.skip=true
+mvn package -Dmaven.test.skip=true
 ```
-The generated WAR file will be located in target/vmrc.war
+If compilation is successful (BUILD SUCCESS), the generated WAR file will be located in target/vmrc.war
 3. Deploy vmrc.war into Apache Tomcat (simply drop the war file into Tomcat's webapps folder).
 4. Start Apache Tomcat
 5. VMRC server's endpoint should be available at http://your_ip:8080/vmrc/vmrc (no GUI, just a WS endpoint)
