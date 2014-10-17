@@ -31,6 +31,8 @@ VMRC - Virtual Machine image Repository &amp; Catalog
    - [vmrc-client](http://www.github.com/grycap/vmrc-client) (CLI and Java-based API to access VMRC)
    - [vmrc-web](http://www.github.com/grycap/vmrc-web) (simple web-based frontend to list VMIs from the VMRC Server with a web-browser)  
 
+If you are looking for a pre-compiled ready-to-use version of the VMRC Server check the website.
+
 1. Features
 ===========
 + Multi-user support.
@@ -64,7 +66,7 @@ VMRC server can operate with an in-memory database provided by HSQLDB (just for 
 
  2.2 Compilation and Installation (from sources)
  ---------------------------------------------
-1. clone this repository:
+1. Clone this repository:
 ```
 git clone https://github.com/grycap/vmrc.git
 ```
