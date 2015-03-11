@@ -12,7 +12,7 @@ VMRC - Virtual Machine image Repository &amp; Catalog
 
  A Virtual Machine Image Repository & Catalog
  Developed by the [Grid and High Performance Computing Group (GRyCAP)](http://www.grycap.upv.es) at the
- [Universitat Politecnica de Valencia (UPV)](http://www.upv.es).
+ [Universitat Politècnica de València (UPV)](http://www.upv.es).
 
  Web page: http://www.grycap.upv.es/vmrc
 
@@ -29,9 +29,9 @@ VMRC - Virtual Machine image Repository &amp; Catalog
 
  This repository only includes the VMRC server. Additional packages available in GitHub are:
    - [vmrc-client](http://www.github.com/grycap/vmrc-client) (CLI and Java-based API to access VMRC)
-   - [vmrc-web](http://www.github.com/grycap/vmrc-web) (simple web-based frontend to list VMIs from the VMRC Server with a web-browser)  
 
-If you are looking for a pre-compiled ready-to-use version of the VMRC Server check the website.
+
+If you are looking for a pre-compiled ready-to-use version of the VMRC Server check the [webpage](http://www.grycap.upv.es/vmrc).
 
 1. Features
 ===========
@@ -41,7 +41,7 @@ If you are looking for a pre-compiled ready-to-use version of the VMRC Server ch
 + OVF support
 
 
- 2. Compilation & Installation
+2. Compilation & Installation
  ===============
 VMRC has been developed in Java using Spring, Hibernate and an SQL-based backend (such as MySQL or HSQLDB).
 It is a web service that has to be deployed in an application server (such as Apache Tomcat).
@@ -50,10 +50,11 @@ It is a web service that has to be deployed in an application server (such as Ap
  ----------------
 + Java JDK 1.7+
 + Maven (to compile from sources and generate the WAR file)  
-+ Apache Tomcat (to deploy the WAR). Works on version 7+ up to 7.0.28 included. Notice that it might not work with newer versions.
++ Apache Tomcat (to deploy the WAR). Works on version 7+ up to 7.0.28 included.
+  Notice that it might not work with newer versions.
 + (Optional) An SQL-based database (tested on MySQL 5+)
 
-If working on Linux (assuming Ubuntu), you can easily install the dependencies (Git, Java + Maven) with:
+If you are working on Linux (assuming Ubuntu), you can easily install the dependencies (Git, Java + Maven) with:
 
 ``
 sudo apt-get update && sudo apt-get install openjdk-7-jdk git maven
@@ -73,18 +74,18 @@ git clone https://github.com/grycap/vmrc.git
 
 2. Compile from sources with the command:
 ```
-mvn package -Dmaven.test.skip=true
+mvn package
 ```
 If compilation is successful (BUILD SUCCESS), the generated WAR file will be located in target/vmrc.war
 3. Deploy vmrc.war into Apache Tomcat (simply drop the war file into Tomcat's webapps folder).
 4. Start Apache Tomcat
+   * $TOMCAT_HOME/bin/startup.sh
 5. VMRC server's endpoint should be available at http://your_ip:8080/vmrc/vmrc (no GUI, just a WS endpoint)
-6. If you want a web-based ultra-simple front-end, consider installing [vmrc-gui](http://www.grycap.upv.es/grycap/vmrc-web)  
-7. Check the VMRC server's manual available at the website http://www.grycap.upv.es/vmrc for further configuration
+7. Check the VMRC server's manual available at the website http://www.grycap.upv.es/vmrc for further configuration or the [manual] folder in the repo.
 
 
 
- 3. Configuration
+3. Configuration
 ==================
 
 The VMRC Server is pre-configured with an in-memory HSQLDB-based database. This should be employed for testing purposes.
@@ -92,5 +93,8 @@ If you want to use another SQL-based backend, proceed accordingly by configuring
 ``
 [TOMCAT_HOME]/webapps/vmrc/WEB-INF/classes/hibernate.cfg.xml
 ``
+A MySQL-based configuration is provided for your convenience.
 
-A MySQL-based configuration is provided for your convenience)
+4. Testing
+===============
+If you want to test VMRC you have to install the [vmrc-client](https://www.github.com/grycap/vmrc-client).
