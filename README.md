@@ -29,9 +29,11 @@ VMRC - Virtual Machine image Repository &amp; Catalog
 
  This repository only includes the VMRC server. Additional packages available in GitHub are:
    - [vmrc-client](http://www.github.com/grycap/vmrc-client) (CLI and Java-based API to access VMRC)
+   - [vmrc-web](http://www.github.com/grycap/vmrc-web) (Web-based GUI to access VMRC)
 
-
-If you are looking for a pre-compiled ready-to-use version of the VMRC Server check the [webpage](http://www.grycap.upv.es/vmrc).
+The easiest and fastest way to deploy VMRC is using Docker:
+ - [VMRC Docker Image - with GUI (Recommended)](https://hub.docker.com/r/grycap/vmrc-web)
+ - [VMRC Docker Image - no GUI](https://hub.docker.com/r/grycap/vmrc)
 
 1. Features
 ===========
@@ -42,7 +44,10 @@ If you are looking for a pre-compiled ready-to-use version of the VMRC Server ch
 
 
 2. Compilation & Installation
- ===============
+===============
+
+Note that using the [Docker image provided](https://hub.docker.com/r/grycap/vmrc-web) is recommended for easy deployment of VMRC. Proceed at your own risk.
+
 VMRC has been developed in Java using Spring, Hibernate and an SQL-based backend (such as MySQL or HSQLDB).
 It is a web service that has to be deployed in an application server (such as Apache Tomcat).
 
