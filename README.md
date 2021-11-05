@@ -16,7 +16,7 @@ VMRC - Virtual Machine image Repository &amp; Catalog
 
  Web page: http://www.grycap.upv.es/vmrc
 
-0. Introduction
+0 Introduction
 ===============
  VMRC is client-server system (based on Web Services) to index and store Virtual Machine Images (VMI)
  along with its metadata (OS, applications, etc.). It supports matchmaking to obtain the appropriate VMIs
@@ -35,7 +35,7 @@ The easiest and fastest way to deploy VMRC is using Docker:
  - [VMRC Docker Image - with GUI (Recommended)](https://hub.docker.com/r/grycap/vmrc-web)
  - [VMRC Docker Image - no GUI](https://hub.docker.com/r/grycap/vmrc)
 
-1. Features
+1 Features
 ===========
 + Multi-user support.
 + Fine-grained authorization (per User and per VMI).
@@ -43,7 +43,7 @@ The easiest and fastest way to deploy VMRC is using Docker:
 + OVF support
 
 
-2. Compilation & Installation
+2 Compilation & Installation
 ===============
 
 Note that using the [Docker image provided](https://hub.docker.com/r/grycap/vmrc-web) is recommended for easy deployment of VMRC. Proceed at your own risk.
@@ -90,7 +90,7 @@ If compilation is successful (BUILD SUCCESS), the generated WAR file will be loc
 
 
 
-3. Configuration
+3 Configuration
 ==================
 
 The VMRC Server is pre-configured with an in-memory HSQLDB-based database. This should be employed for testing purposes.
@@ -100,6 +100,6 @@ If you want to use another SQL-based backend, proceed accordingly by configuring
 ``
 A MySQL-based configuration is provided for your convenience.
 
-4. Testing
+4 Testing
 ===============
 If you want to test VMRC you have to install the [vmrc-client](https://www.github.com/grycap/vmrc-client).
