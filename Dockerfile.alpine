@@ -1,0 +1,49 @@
+FROM openjdk:7u181-jdk-alpine3.7
+
+RUN apk add --no-cache \
+    curl \
+    git \
+    maven
+
+RUN mkdir -p "/vmrc"
+WORKDIR /vmrc
+
+RUN git clone https://github.com/grycap/vmrc.git
+
+WORKDIR /vmrc/vmrc
+
+RUN mvn package
+
+
+FROM openjdk:7u181-jdk-alpine3.7
+LABEL maintainer="Germán Moltó <gmolto@dsic.upv.es>"
+
+RUN apk add --no-cache \
+    curl \
+    git \
+    maven
+
+ENV CATALINA_HOME /usr/local/tomcat
+ENV PATH $CATALINA_HOME/bin:$PATH
+RUN mkdir -p "$CATALINA_HOME"
+WORKDIR $CATALINA_HOME
+
+
+#VMRC will refuse to run on newer versions of Apache Tomcat
+ENV TOMCAT_MAJOR 7
+ENV TOMCAT_VERSION 7.0.28
+ENV TOMCAT_TGZ_URL https://archive.apache.org/dist/tomcat/tomcat-$TOMCAT_MAJOR/v$TOMCAT_VERSION/bin/apache-tomcat-$TOMCAT_VERSION.tar.gz
+
+RUN set -x \
+	&& curl -fSL "$TOMCAT_TGZ_URL" -o tomcat.tar.gz \
+	&& curl -fSL "$TOMCAT_TGZ_URL.asc" -o tomcat.tar.gz.asc \
+	&& tar -xvf tomcat.tar.gz --strip-components=1 \
+	&& rm bin/*.bat \
+	&& rm tomcat.tar.gz*
+
+WORKDIR $CATALINA_HOME/vmrc
+
+COPY --from=0 /vmrc/vmrc/target/vmrc.war $CATALINA_HOME/webapps
+
+EXPOSE 8080
+CMD ["catalina.sh", "run"]
